@@ -4,7 +4,7 @@ import CreateProjectModal from "../components/CreateProjectModal";
 import EditProjectModal from "../components/EditProjectModal"; // new modal for editing
 import ProfileModal from "../components/ProfileModal";
 import DashboardCard from "../components/DashboardCard";
-import { getProjects, deleteProject, createProject, updateProject } from "../api/api";
+import { getProjects, deleteProject, createProject, updateProject,logoutUser } from "../api/api";
 
 const STATUSES = ["NotStarted","Active","InProgress","Completed","OnHold","Cancelled"];
 
@@ -31,6 +31,10 @@ export default function Dashboard() {
       setLoading(false);
     }
   };
+  const handleLogout = () => {
+      logoutUser();
+      window.location.href = "/login";
+    };
 
   useEffect(() => { fetchProjects(); }, []);
 
@@ -72,7 +76,7 @@ export default function Dashboard() {
         <button style={styles.logoBtn}>🚀 Task Management</button>
         <div style={styles.userSection}>
           <button style={styles.profileBtn} onClick={()=>setShowProfileModal(true)}>Profile</button>
-          <button style={styles.profileBtn} onClick={()=>setShowProfileModal(true)}>Logout</button>
+          <button style={styles.profileBtn} onClick={handleLogout}>Logout</button>
         </div>
       </div>
 
