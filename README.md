@@ -1,16 +1,77 @@
-# React + Vite
+# Task Manager Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Task Manager Application.  
+It is built with **React** and **Vite**, and can be run locally or in Docker.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## React Compiler
+- Node.js 20.x
+- npm 9+ (comes with Node 20)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> ⚠ Make sure Node version is 20 to avoid dependency conflicts.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 1️⃣ Running Locally (Development)
+
+1. Open terminal in this folder.
+2. Install dependencies:
+
+```bash
+npm install
+
+Start the development server:
+
+npm run dev
+
+Open your browser at:
+
+http://localhost:5173
+
+Any changes you make in src/ will auto-reload.
+
+2️⃣ Build for Production
+
+To create a production-ready build:
+
+npm run build
+
+The output will be in the /dist folder.
+
+3️⃣ Running in Docker (Optional)
+
+If you prefer to run the app in Docker:
+
+Build the Docker image:
+
+docker build -t taskmanager-frontend .
+
+Run the Docker container:
+
+docker run -p 3000:80 taskmanager-frontend
+
+Open in browser:
+
+http://localhost:3000
+
+The Dockerfile is included in the repo and ready for production deployment.
+
+4️⃣ Notes
+
+The project uses Node 20 — do not use Node 22 or higher.
+
+.dockerignore is included to speed up Docker builds.
+
+No other setup is needed; this is production-ready.
+
+5️⃣ Folder Structure
+taskmanager-frontend/
+├── public/           # Static assets
+├── src/              # React source code
+├── package.json      # Node dependencies
+├── package-lock.json
+├── Dockerfile        # Production Docker container
+├── .dockerignore
+└── README.md
